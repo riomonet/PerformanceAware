@@ -1,0 +1,62 @@
+* 8086 CPU Simulation
+ - Intel 8086/8088 1970's architecture
+
+   1. Instruction Decode
+      Mnemonic => mov is a mnemonic for making a copy
+      copying data across a databus. from one register to another
+      intel style =>  mov ax, bx  => copy from operand bx to operand ax
+
+
+      mov ax, bx => this is the mnemomic that get's encoded into a binary form
+      that gets decoded by the chips decoder when using an assembler
+
+      mov instruction
+      
+          6           8bit       second 8  bits are paramaters 
+          opcode       Bitflags     2bits 3bits  3
+          100010         DW        mod    reg   reg/mem
+      
+      - mod field tells the cpu whether this is a memory or register operation.
+	reg to reg (11)
+      - reg field encodes a register 
+      - r/m field encodes a register or memory
+      - D field specifies which of (reg, r/m) are the destination
+	if 0 then reg field is not destination(so r/m is dest)
+	if 1 then reg field is destination(so r/m is source)
+      - W tells us 8 or 16 bits
+	0 means 8bits(lower part of register), 1 means 16 bits(the whole register)
+      - reg and r/m are look ups in tables
+
+	mov ax, bx (is all 16 bits)
+	mov al, bl (is 8bits)
+	mov ah, bh (is 8bits)
+
+
+      write the decoder for mov reg to reg
+      (look up the 8086 manual from the internet)
+      intel 8086 manual pg164 section how to decode instructions
+      reg tables
+
+
+Build a  disassmebler the 8086 mov instruction from a assmebled file.
+A binary file.
+
+Download .asm file
+Assemble it
+Disassmeble with your program to a .asm
+reassemble your dump 
+compare your output with the original .asm file
+read the assemebled file
+need to build the tables for lookup from the manual
+
+
+
+
+
+
+
+
+
+
+
+
